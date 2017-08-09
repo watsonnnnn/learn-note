@@ -367,3 +367,37 @@ export default function compose(...funcs) {
   return (...args) => rest.reduceRight((composed, f) => f(composed), last(...args))
 }
 </pre>
+redux还提供了一个bindactioncreators方法来将所有的action和dispatch进行关联，从而减少我们写的代码，下面上它：
+
+<pre>
+//核心是这个，传creator和dispatch进来，返回组合后的
+function bindActionCreator(actionCreator, dispatch) {
+  return (...args) => dispatch(actionCreator(...args))
+}
+/***/
+export default function bindActionCreators(actionCreators, dispatch) {
+  //传的是函数，那就是代表这个就是actioncreator
+  if (typeof actionCreators === 'function') {
+    return bindActionCreator(actionCreators, dispatch)
+  }
+
+  if (typeof actionCreators !== 'object' || actionCreators === null) {
+    throw new Error(
+      `bindActionCreators expected an object or a function, instead received ${actionCreators === null ? 'null' : typeof actionCreators}. ` +
+      `Did you write "import ActionCreators from" instead of "import * as ActionCreators from"?`
+    )
+  }
+
+  var keys = Object.keys(actionCreators)
+  var boundActionCreators = {}
+  // 对所有actions进行处理，组合出来所有的actioncreator
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i]
+    var actionCreator = actionCreators[key]
+    if (typeof actionCreator === 'function') {
+      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch)
+    }
+  }
+  return boundActionCreators
+}
+</pre>
