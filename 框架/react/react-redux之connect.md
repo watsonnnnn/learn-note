@@ -55,3 +55,6 @@ export function createConnect({
 
 export default createConnect()
 </pre>
+<pre>
+import hoistStatics from 'hoist-non-react-statics' // 自动把所有绑定在对象上的非react方法都绑定到新的对象上
+</pre>
