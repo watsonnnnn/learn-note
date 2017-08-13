@@ -1,5 +1,5 @@
 ### promise
-
+<pre>
 function IPromise(fn) {
   let state = "pending";
   let value = null;
@@ -41,3 +41,4 @@ function IPromise(fn) {
   }
   fn(resolve);
 }
+</pre>
