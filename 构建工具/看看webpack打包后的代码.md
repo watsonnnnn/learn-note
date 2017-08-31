@@ -274,3 +274,84 @@ module.exports.chunk2=33
 </pre>
 
 ### CommonsChunkPlugin
+在index.js和index1.js中引入同一个chunk1.js模块
+<pre>
+module.exports = {
+    entry: {'index':'./index.js','index1':'./index1.js'},
+    // entry: ['./index.js','./index1.js'],
+    output: {
+        path: path.resolve(__dirname,'dist'),
+        filename: '[name].js'
+    },
+    plugins:[
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'commons'
+        })
+    ]
+}
+</pre>
+<pre>
+// index.js
+webpackJsonp([1],[
+/* 0 */,            ----------------这里有个逗号，数组是两个元素，moduleId是1，所以require函数在数组下标1的位置
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var t = __webpack_require__(0)
+console.log(t)
+module.exports.qaqaqa=1
+
+/***/ })
+],[1]);
+
+// index1.js
+webpackJsonp([0],{
+
+/***/ 2:     //moduleid是2，这里的key就为2
+/***/ (function(module, exports, __webpack_require__) {
+
+var t = __webpack_require__(0)
+console.log(t)
+module.exports.qqq=22
+
+/***/ })
+
+},[2]);
+</pre>
+<pre>
+window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules, executeModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [], result;
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0; // 0表示loaded
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) { // 
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules, executeModules);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/ 		if(executeModules) {
+/******/ 			for(i=0; i < executeModules.length; i++) {
+/******/ 				result = __webpack_require__(__webpack_require__.s = executeModules[i]);
+/******/ 			}
+/******/ 		}
+/******/ 		return result;
+/******/ 	};
+			var installedModules = {};
+/******/
+/******/ 	// objects to store loaded and loading chunks 已加载的公共chunk
+/******/ 	var installedChunks = {
+/******/ 		2: 0
+/******/ 	};
+</pre>
+### require.ensure
+内部会以promise的形式去require
