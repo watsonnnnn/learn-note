@@ -29,3 +29,41 @@ setImmediate(callback[,...args])，callback将在所有io事件处理完毕后�
 所以setimmediate是最后一个，nexttick插队操作是第一个。
 
 不过，如果delay延时时间长，而主线程和nexttick都执行完了，那么setImmediate就会得到空闲期，就会先执行。
+
+### 正常任务（task）与微任务（microtask）
+它们的区别在于，正常任务 在下一轮Event Loop执行，微任务 在本轮Event Loop的所有任务结束后执行
+<pre>
+console.log(1);
+
+setTimeout(function() {
+  console.log(2);
+}, 0);
+
+Promise.resolve().then(function() {
+  console.log(3);
+}).then(function() {
+  console.log(4);
+});
+
+console.log(5);
+
+// 1
+// 5
+// 3
+// 4
+// 2
+
+上面代码的执行结果说明，setTimeout(fn, 0)在Promise.resolve之后执行。
+
+这是因为setTimeout语句指定的是“正常任务”，即不会在当前的Event Loop执行。而Promise会将它的回调函数，在状态改变后的那一轮Event Loop指定为微任务。所以，3和4输出在5之后、2之前。
+</pre>
+
+正常任务包括以下情况。
+
+> setTimeout
+setInterval
+setImmediate
+I/O
+各种事件（比如鼠标单击事件）的回调函数
+
+微任务目前主要是process.nextTick和 Promise 这两种情况。
