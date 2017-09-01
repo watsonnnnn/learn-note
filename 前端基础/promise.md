@@ -1,4 +1,6 @@
 ### promise
+
+https://tech.meituan.com/promise-insight.html
 <pre>
 function IPromise(fn) {
   let state = "pending";
