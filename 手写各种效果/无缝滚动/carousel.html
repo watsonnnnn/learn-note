@@ -10,18 +10,34 @@
             margin: 0
         }
         body div{
+            width: 860px;
+            height:200px;
+            position: relative;
+            overflow: hidden
+        }
+        body ul{
+            margin:0;
+            padding: 0;
             position: absolute;
-            top:10%;
-            left:10%;
         }
         body ul>li{
-            display: inline-block
+            /* display: inline-block; 元素之间会有间距*/
+            list-style: none;
+            float:left;
+            margin:0;
+            padding: 0;
+        }
+        body ul img{
+            transition: all 0.1s linear;
+        }
+        a:hover{
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-        <div style="margin:100px;border:1px solid red">
+        <div style="margin:100px auto 0;border:1px solid red">
             <ul>
                 <li><img width="200" height="200" src="./p1.jpg" alt=""></li>
                 <li><img width="200" height="200" src="./p2.jpg" alt=""></li>
@@ -30,7 +46,7 @@
             </ul>            
         </div>
         <div>
-            <a onclick="click()"></a>
+            <a onclick="click1()" style="color:red">向右</a>
         </div>
     <script src="./carousel.js"></script>
 </body>
