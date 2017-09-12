@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <input type="button" value="button"/>
+        <div id="main">
+            
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded',function(){
+                if(!window.MutationObserver){
+                    alert('browser version is too low!')
+                    return
+                }
+                document.querySelector('input').addEventListener('click',function(e){
+                    var d = document.createElement('p')
+                    // d.innerHTML = Date.now()
+                    // document.querySelector('#main').appendChild(d)
+                    document.querySelector('input').value = 'bbbbbb'
+                })
+                function cb(mutationRecords,osr){
+                    console.log(mutationRecords)
+                }
+                var observer = new MutationObserver(cb)
+                var obj = document.querySelector('#main')
+                var oconfig = {
+                    childList: true,
+                    subtree: true,
+                    attributes: true
+                }
+                observer.observe(document.body, oconfig)
+            })
+        </script>
+    </body>
+</html>
