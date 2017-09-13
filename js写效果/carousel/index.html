@@ -1,0 +1,114 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Title</title>  
+    <style>  
+        *{ padding: 0; margin: 0;}  
+        div{  
+            width: 520px;  
+            height: 280px;  
+            border:1px solid gold;  
+            margin:100px auto;  
+            overflow: hidden;  
+            position:relative;  
+        }  
+        li{  
+            list-style:none;  
+        }  
+        ul:first-child{  
+            width: 9999px;  
+            overflow: hidden;  
+            position:absolute;  
+            transition:all 0.5s;
+        /* 过渡效果0.5s   */
+        }  
+        ul:first-child li{  
+            float:left;  
+            width: 520px;  
+            height: 280px;  
+        }  
+        ul:last-child{  
+            width: 100px;  
+            height: 15px;  
+            background-color:rgba(0,0,0,.5);  
+            border-radius:10px;  
+            position: absolute;  
+            bottom:10px;  
+            left:50%;  
+            margin-left:-50px;  
+        }  
+        ul:last-child li:first-child{  
+            margin-left:4px;  
+        }  
+        ul:last-child li{  
+            cursor:pointer;  
+            float:left;  
+            width: 15px;  
+            height: 15px;  
+            margin-right:4px;  
+            background-color: #ccc;  
+            border-radius: 50%;  
+        }  
+        ul:last-child li.star{  
+            background-color: gold;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div>  
+        <ul id="banner">  
+            <li><img src="images/p1.jpg" alt=""></li>  
+            <li><img src="images/p2.jpg" alt=""></li>  
+            <li><img src="images/p3.jpg" alt=""></li>  
+            <li><img src="images/p4.jpg" alt=""></li>  
+        </ul>  
+        <ul id="controls">  
+            <li class="star"></li>  
+            <li></li>  
+            <li></li>  
+            <li></li>  
+            <!-- <li></li>   -->
+        </ul>  
+    </div>  
+    <script>  
+        var g=function(node){  
+            if(node.substr(0,1)=="#"){  
+                return document.getElementById(node.substr(1));  
+            }  
+        }  
+        var banner=g("#banner");  
+        var controls=g("#controls");  
+        var controlsLis=controls.getElementsByTagName("li");  
+        var timer=null;//设置定时器  
+        var num=0;  
+        for(var i=0;i<controlsLis.length;i++){  
+            controlsLis[i].index=i;  
+            controlsLis[i].onclick=function(){  
+                clearInterval(timer);  
+                for(var j=0;j<controlsLis.length;j++){  
+                    controlsLis[j].className=''//把所有的控制按钮颜色都去掉  
+                }  
+                this.className='star';//当前点击的按钮变色  
+                banner.style.left=-520*this.index+"px";  
+                num=this.index;  
+                autoPlay();  
+            }  
+        }  
+        function autoPlay(){  
+            timer=setInterval(function(){  
+                if(num>3){  
+                    num=0;  
+                }  
+                for(var j=0;j<controlsLis.length;j++){  
+                    controlsLis[j].className=''//把所有的控制按钮颜色都去掉  
+                }  
+                controlsLis[num].className='star';  
+                banner.style.left=-520*num+"px";  
+                num++;  
+            },2000)  
+        }  
+        autoPlay();  
+    </script>  
+</body>  
+</html> 

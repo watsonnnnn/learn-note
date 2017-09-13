@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        ul#ul1{
+            height: 200px;
+            position: absolute;
+            overflow: hidden;
+            width:1200px;
+            transition: all 0.5s
+        }
+        ul#ul1>li{
+            float: left;
+            width: 300px;
+            height: 200px;
+        }
+        ul#ul2>li{
+            height:20px;
+            width:20px;
+            background: #ccc;
+            border-radius: 10px;
+            margin-right: 4px;
+            float: left;
+        }
+        ul#ul2{
+            background: #fff;
+            position: absolute;
+            bottom:10px;
+            left:40%;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:300px;overflow:hidden;position:relative;height:200px">
+        <ul id="ul1" style="left:0px;">
+            <li>
+                    <img height="100%" width="100%" src="images/p1.jpg" alt="" srcset="">
+            </li>
+            <li>
+                    <img height="100%" width="100%" src="images/p2.jpg" alt="" srcset="">
+            </li>
+            <li>
+                    <img height="100%" width="100%" src="images/p3.jpg" alt="" srcset="">
+            </li>
+            <li>
+                    <img height="100%" width="100%" src="images/p4.jpg" alt="" srcset="">
+            </li>
+        </ul>
+        <ul id="ul2">
+            <li data-index='0'></li>
+            <li data-index='1'></li>
+            <li data-index='2'></li>
+            <li data-index='3'></li>
+        </ul>    
+    </div>
+    <script>
+        (function(doc){
+            var ul1 = doc.querySelector('#ul1')
+            var ul2 = doc.querySelector('#ul2')
+            var index = 0;
+            var inter
+            clearInterval(inter)
+            clear(0)
+            function play(){
+                ++ index
+                if(index > ul1.getElementsByTagName('li').length - 1){
+                    index = 0
+                }
+                ul1.style.left = -300*index + 'px'
+                clear(index)
+            }
+            ul2.addEventListener('click',function(e){
+                if(e.target.tagName === 'LI'){
+                clearInterval(inter)
+                index = +e.target.dataset.index
+
+                if(index > ul1.getElementsByTagName('li').length - 1){
+                    index = 0
+                }
+                ul1.style.left = -300*index + 'px'
+                clear(index)
+                inter = setInterval(play,1000)
+                }
+            })
+            function clear(index){
+                var arr = [].slice.call(ul2.getElementsByTagName('li'),null)
+                arr.forEach(function(item){
+                    item.style.background = '#ccc'
+                })
+                ul2.getElementsByTagName('li')[index].style.background = 'green'
+            }
+            inter = setInterval(play,1000)
+        })(document)
+    </script>
+</body>
+</html>
