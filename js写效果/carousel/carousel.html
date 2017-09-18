@@ -18,7 +18,7 @@
             position: absolute;
             overflow: hidden;
             width:1200px;
-            transition: all 0.5s
+            transition: all 1s
         }
         ul#ul1>li{
             float: left;
@@ -43,7 +43,7 @@
     </style>
 </head>
 <body>
-    <div style="width:300px;overflow:hidden;position:relative;height:200px">
+    <div class="container" style="width:300px;overflow:hidden;position:relative;height:200px">
         <ul id="ul1" style="left:0px;">
             <li>
                     <img height="100%" width="100%" src="images/p1.jpg" alt="" srcset="">
@@ -66,43 +66,79 @@
         </ul>    
     </div>
     <script>
-        (function(doc){
+        /**
+        @todo
+        最后一张图
+        /
+
+        !function(doc){
+            var time = 3000
             var ul1 = doc.querySelector('#ul1')
             var ul2 = doc.querySelector('#ul2')
-            var index = 0;
+            var containerWidth = doc.querySelector('.container').style && parseInt(doc.querySelector('.container').style.width) || parseInt(window.getComputedStyle(doc.querySelector('.container').style))
+            var liLength = ul1.getElementsByTagName('li').length
+
+            ul1.innerHTML += ul1.innerHTML
+
+            var index = 0
             var inter
+
             clearInterval(inter)
-            clear(0)
+            var auto_play = true
+
+            setRoundColor(index)
+
+            function setOption(el,attr){
+                el.style[attr] = -containerWidth*index + 'px'
+            }
+
             function play(){
                 ++ index
-                if(index > ul1.getElementsByTagName('li').length - 1){
+                goToIndex()
+                
+            }
+            //跳到指定位置图和圆点
+            function goToIndex(){
+                var transition
+                if(index > liLength - 1){
+                    transition = window.getComputedStyle(ul1).transition
+                    ul1.style.transition = 'none'
                     index = 0
                 }
-                ul1.style.left = -300*index + 'px'
-                clear(index)
+                setOption(ul1,'left')
+                setRoundColor(index)
+                setTimeout(function(){
+                    transition && (ul1.style.transition = transition)
+                },0)
             }
+            //小圆点点击
             ul2.addEventListener('click',function(e){
                 if(e.target.tagName === 'LI'){
+
                 clearInterval(inter)
+
                 index = +e.target.dataset.index
 
-                if(index > ul1.getElementsByTagName('li').length - 1){
-                    index = 0
+                goToIndex()
+                if(auto_play){
+                    inter = setInterval(play,time)
                 }
-                ul1.style.left = -300*index + 'px'
-                clear(index)
-                inter = setInterval(play,1000)
                 }
             })
-            function clear(index){
+            //设置小圆点颜色
+            function setRoundColor(index){
                 var arr = [].slice.call(ul2.getElementsByTagName('li'),null)
                 arr.forEach(function(item){
                     item.style.background = '#ccc'
                 })
                 ul2.getElementsByTagName('li')[index].style.background = 'green'
             }
-            inter = setInterval(play,1000)
-        })(document)
+            
+            if(auto_play){
+                inter = setInterval(play,time)
+            }
+
+        }(document)
     </script>
 </body>
 </html>
