@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <input type="file" id="file1" name="file1" value="" />
+        <input type="button" name="" value="button" onclick="upload()"/>
+        <script>
+            function upload(){
+                var form = new FormData()
+                var file = document.getElementById('file1')
+                // form.append('file1',file.files[0])
+                form.append('qqq','qqq')
+                console.log(form)
+                var request = new XMLHttpRequest();
+request.open("POST", "http://foo.com/submitform.php");
+request.send(form);
+
+            }
+        </script>
+    </body>
+</html>
