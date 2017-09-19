@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <canvas id="canvas1" height="200" width="200">low level</canvas>
+        <script>
+            var canvas1 = document.querySelector('#canvas1')
+            var cxt = canvas1.getContext('2d')
+            // cxt.fillStyle = "rgb(200,0,0)"
+            // cxt.fillRect(10,10,55,50)
+
+            cxt.fillStyle = "rgba(0, 0, 200, 0.5)";
+            // cxt.fillRect (30, 30, 55, 50);
+
+            cxt.fillRect(25,25,60,60)
+            cxt.clearRect(40,40,30,30)
+            cxt.strokeStyle = "rgb(200,0,0)"
+
+            cxt.strokeRect(50,50,15,15);
+        </script>
+    </div>
+</body>
+</html>
