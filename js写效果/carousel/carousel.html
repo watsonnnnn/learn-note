@@ -110,11 +110,12 @@
 
                 setOption(ul1,'left')
                 setRoundColor(index)
-                console.log(index)
+                console.log(ul1.offsetLeft)
 
                 if(index == liLength){
                     transition = window.getComputedStyle(ul1).transition
-                    ul1.style.left = 0+'px'
+                    ul1.style.cssText="transition:none !important;left:0px"
+                    // ul1.style.left = 0+'px'
                     console.log(transition)
                     index = 0
                 }
