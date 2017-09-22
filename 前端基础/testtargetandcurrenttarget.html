@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>target</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .out{
+                height: 300px;
+                width: 300px;
+                border: 1px solid red;
+            }
+            .in{
+                height: 100px;
+                width: 100px;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="out">
+            <p class="in">
+
+            </p>
+        </div>
+        <p>
+            点击时层次最深的那个结点是e.target
+            事件流转阶段，e.currentTarget指的是事件流转到的节点，前提是在该节点上先有事件处理函数。
+            事件流转过程，e.eventPhase 值为1指的是捕获阶段，2为目标阶段，3为冒泡阶段。
+        </p>
+        <script>
+            var out =document.querySelector('.out')
+            var oin = document.querySelector('.in')
+            out.addEventListener('click',function(e){
+                console.log(e.currentTarget.tagName,e.target.tagName,e.eventPhase,'out')
+            })
+            oin.addEventListener('click',function(e){
+                console.log(e.currentTarget.tagName,e.target.tagName,e.eventPhase,'in')
+            })
+        </script>
+    </body>
+</html>

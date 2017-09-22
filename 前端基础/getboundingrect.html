@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>getboundingrect</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+            .div1{
+                border: 1px solid red;
+                height: 500px;
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div1">
+            
+        </div>
+        <div class="div1">
+            
+        </div>
+        <div class="div1">
+            
+        </div>
+        <div class="div1 div2">
+            
+        </div>
+        <script>
+            window.onload=function () {
+                var o = document.getElementsByClassName('div2')[0]
+                console.log(o.getBoundingClientRect())
+            }
+        </script>
+    </body>
+</html>
