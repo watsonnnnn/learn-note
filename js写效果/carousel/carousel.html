@@ -77,7 +77,7 @@
         最后一张图不能平稳过去
         */
 
-        !function(doc){
+        void function(doc){
             var time = 3000
             var ul1 = doc.querySelector('#ul1')
             var ul2 = doc.querySelector('#ul2')
@@ -106,31 +106,22 @@
             var transition
             //跳到指定位置图和圆点
             function goToIndex(){
-                
-
+                ul1.style.transition = 'all 1s'
                 setOption(ul1,'left')
                 setRoundColor(index)
-                console.log(ul1.offsetLeft)
-
+            }
+            ul1.addEventListener('transitionend',function(){
                 if(index == liLength){
-                    transition = window.getComputedStyle(ul1).transition
-                    ul1.style.cssText="transition:none !important;left:0px"
-                    // ul1.style.left = 0+'px'
-                    console.log(transition)
+                    ul1.style.transition = 'none'
+                    ul1.style.left = '0px'
                     index = 0
                 }
-
-                
-                
-            }
+            })
             //小圆点点击
             ul2.addEventListener('click',function(e){
                 if(e.target.tagName === 'LI'){
-
                 clearInterval(inter)
-
                 index = +e.target.dataset.index
-
                 goToIndex()
                 if(auto_play){
                     inter = setInterval(play,time)
