@@ -4,10 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>ball</title>
+    <style>
+        canvas{
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="canvas1" height="400" width="400">not support canvas</canvas>
-    
+    <canvas id="canvas1" height="800" width="800">not support canvas</canvas>
+
+    <script>
+        var can = document.getElementById('canvas1')
+        var ctx = can.getContext('2d')
+        var index = 10
+
+        function Ball(x,y,r,ele){
+            this.x = x
+            this.y = y
+            this.r = r
+        }
+
+        Ball.prototype.render = function(){
+            ctx.beginPath()
+            this.x += Math.floor(Math.random()*40-20);
+            this.y += Math.floor(Math.random()*40-20);
+            if(this.x >= can.width - this.r){
+                console.log(this.x,can.width,this.r)
+                this.x = 260
+            }else if(this.x<=this.r){
+                index = 10
+            }
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI*2, false)
+            ctx.fillStyle = 'rgba(100,150,185,'+Math.random()+')'
+            ctx.fill()
+        }
+        var b = new Ball(60,60,40)
+
+        var b1 = new Ball(120,60,40)
+
+        var balls = [];//数组接受创建的n个小球
+        for(var i = 0;i < 100;i++) {
+            var ball = new Ball(260+i*4,260,20);//创建对象
+            balls.push(ball);//生成的小球对象放进数组
+        }
+        setInterval(function() {
+            ctx.clearRect(0, 0, can.width, can.height);//清除画布
+            for(var i = 0;i < balls.length;i++) {
+                balls[i].render();
+            }
+        },100)
+        // b.render()
+
+        // b1.render()
+
+    </script>
 </body>
 </html>
