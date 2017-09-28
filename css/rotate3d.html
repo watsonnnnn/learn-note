@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>rotate3d</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .div1,.div2{
+                height: 500px;
+                width: 500px;
+                border: 1px solid #000;
+                border-radius: 50%;
+                box-shadow: 10px 10px 20px #ccc;
+                transform: rotateX(60deg) rotateY(-10deg);
+                margin: auto;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+            .div2{
+                animation: rotat 2s linear infinite
+            }
+            /*.div3{
+                transform-origin: -50px -58px;
+            }*/
+            .div2{
+                height: 300px;
+                width:300px;
+            }
+            .div3{
+                height: 100px;
+                width:100px;
+                position: absolute;
+                border: 6px solid #00c4c8;
+                /*top: 108px;*/
+                /*left: 100px;*/
+                right: 0;
+                bottom: 0;
+                border-radius: 50%;
+            }
+
+            @keyframes rotat{
+                0%{transform: rotateX(60deg) rotateY(-10deg) rotateZ(0)}
+                50%{transform: rotateX(60deg) rotateY(-10deg) rotateZ(180deg)}
+                100%{transform: rotateX(60deg) rotateY(-10deg) rotateZ(360deg)}
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div1">
+        </div>
+        <div class="div2">
+            <div class="div3">
+            </div>
+        </div>
+        
+    </body>
+</html>
