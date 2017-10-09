@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="div1">
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+        </div>
+        <script>
+            var qsnodes =document.querySelectorAll('span')
+            var nodes = document.getElementById('div1').childNodes
+            console.log(qsnodes.length,nodes.length)
+            var span = document.createElement('span')
+            document.getElementById('div1').appendChild(span)
+            console.log(qsnodes.length,nodes.length,document.getElementById('div1').children)
+        </script>
+    </body>
+</html>

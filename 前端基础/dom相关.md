@@ -43,3 +43,23 @@ sTop = document.documentElement.scrollTop == 0 ? document.body.scrollTop : docum
 </pre>
 
 
+
+### Nodelist和HTMLCollection
+
+Node.childNodes、document.querySelectorAll()返回的是NodeList对象，动态集合
+
+document.links、document.forms、document.images等属性返回的都是HTMLCollection实例对象。
+
+共同：两者返回的都是类数组对象，都有length属性；都有item方法，参数是数字下标，相当于直接访问下标元素；都是动态的变化的(document.querySelectorAll比较特殊，返回的是静态的对象)
+
+不同：HTMLCollection里面只能是元素结点，就是nodeType为1的结点，而NodeList可以是任何结点。HTMLCollection里面有一个nameItem方法，参数是id值或者是name值。
+<pre>
+var c = document.images;
+var img1 = c.item(1);
+// 等价于下面的写法
+var img1 = c[1];
+
+var elem = document.forms.namedItem('myForm');
+// 等价于下面的写法
+var elem = document.forms['myForm'];
+</pre>
