@@ -29,11 +29,11 @@
 
 
             #content{width:100%;height:100%;overflow: hidden}
-            #content .list{}
+            #content .list{transition: .5s}
             #content .liList{height: 600px;background: center 0 no-repeat;display: flex}
             #content .liList:nth-of-type(1){background: red}
             #content .liList:nth-of-type(2){background: green}
-            #content .liList:nth-of-type(3){background: green}
+            #content .liList:nth-of-type(3){background: yellow}
             #content .liList:nth-of-type(4){background: blue}
             #content .divList{width:1100px;height: 520px;border: 1px solid black;margin: auto}
         </style>
@@ -97,15 +97,101 @@
             var arrow = $$(headerMain,'arrow')[0]
             var nav = $$(headerMain, '.nav')[0]
             var navLi = $$(nav,'li')
+            var content = $('#content')
+            var list = $$(content,'.list')[0]
+            var liList = $$(content, '.liList')
+            var nowIndex = 0
+            var timer
 
             function init(){
-
+                autoHeight()
+                bindNav()
+                slideList(0)
             }
 
+            init()
+
             function arrowPos(index){
+                for(var i = 0;i<navLi.length;i++){
+                    var up = $$(navLi[index],'.up')[i]
+                    up.style.width = '0%'
+                }
+
+                var up = $$(navLi[index],'.up')[0]
+                up.style.width = '100%'
+
                 arrow.style.left = navLi[index].offsetLeft + navLi[index].offsetWidth/2 + 'px'
             }
 
+            function bindNav(){
+                for(var i = 0;i<navLi.length;i++){
+                    navLi[i].index = i
+                    navLi[i].onclick = function(){
+                        // arrowPos(this.index)
+                        nowIndex = this.index
+                        slideList(this.index)
+                    }
+                }
+            }
+
+            function autoHeight(){
+                var bgH = 998 + headerMain.offsetHeight
+
+                var iH =viewH() > bgH?bgH:viewH()
+
+                content.style.height = iH - headerMain.offsetHeight + 'px'
+
+                for(var i = 0; i<liList.length;i++){
+                    liList[i].style.height = iH - headerMain.offsetHeight + 'px'
+                }
+            }
+
+            function resizeScreen(){ // 改变分辨率时 适配
+                window.onresize = function(){
+                    autoHeight()
+                }
+            }
+
+            function slideList(index){ // 列表切换
+                setCSS3(list, 'transform', 'translateY(' + (-index*liList[index].offsetHeight) +'px)')
+            }
+
+            function bindScroll(){ // 鼠标滚轮 ie chrome : onmousewheel  ff: DOMMouseScroll
+
+                var dir = false
+
+                if(content.addEventListener){
+                    content.addEventListener('DOMMouseScroll',function(ev){
+                        ev = ev || event
+                        toChange(ev)
+                        console.log(11)
+                    })
+                }
+                content.onmousewheel= function(ev){
+                    ev = ev || event
+                    toChange(ev)
+                }
+                function toChange(ev){// ev.detail ev.wheelDelta
+                    clearTimeout(timer)
+                    timer =setTimeout(function(){
+                        if(ev.detail){
+                        dir = ev.detail > 0
+                    }else{
+                        dir = !ev.wheelDelta > 0
+                    }
+                    if(dir){
+                        if(nowIndex != liList.length -1){
+                            nowIndex ++
+                        }
+                    }else{
+                        if(nowIndex != 0){
+                            nowIndex --
+                        }
+                    }
+                    slideList(nowIndex)
+                    }, 200)
+                }
+            }
 
             //
             function $(selector){
@@ -129,7 +215,7 @@
                 return window.innerHeight || document.documentElement.clientHeight
             }
             function setCSS3(ele,attr,value){// setCSS3(content,'transform','rotate(100deg)')
-                ele.style[arrt] = value
+                ele.style[attr] = value
                 ele.style['webkit'+attr.substring(0,1).toUpperCase()+attr.substring(1)] = value
             }
         }()
