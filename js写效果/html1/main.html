@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>html1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body,p,ul,ol,h1,h2,h3,h4{margin: 0;padding: 0}
+            li{list-style: none}
+            img{border:none;vertical-align: top}
+            a{text-decoration: none}
+
+            .clear{zoom: 1}
+            .clear::after{content: "";display: block;clear: both}
+
+            html,body{height: 100%;overflow: hidden;font: 14px "微软雅黑";background: red}
+
+            #header{width: 100%;height: 80px;background: white}
+            #headerMain{width: 1100px;height: 100%;margin: 0 auto;position: relative}
+            #headerMain .logo{float: left;margin-top:30px}
+            #headerMain .nav{float: right;color: #0000f0}
+            #headerMain .nav li{float: left;position: relative;line-height: 20px;margin-top: 50px;cursor: pointer;
+            margin-left: 40px;}
+            #headerMain .nav li:hover .up{width: 100%}
+            #headerMain .nav .up{position: absolute;left:0;top:0;color: black;overflow: hidden;
+            width:0%;transition: .5s;}
+            #headerMain .nav .down{}
+            #headerMain .arrow{}
+
+
+            #content{width:100%;height:100%;overflow: hidden}
+            #content .list{}
+            #content .liList{height: 600px;background: center 0 no-repeat;display: flex}
+            #content .liList:nth-of-type(1){background: red}
+            #content .liList:nth-of-type(2){background: green}
+            #content .liList:nth-of-type(3){background: green}
+            #content .liList:nth-of-type(4){background: blue}
+            #content .divList{width:1100px;height: 520px;border: 1px solid black;margin: auto}
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div id="header">
+                <div id="headerMain">
+                    <a class="logo" href=""><img src="./p1.jpg" height="40" alt=""></a>
+                    <ul class="nav">
+                        <li>
+                            <div class="up">accccc1</div>
+                            <div class="down">accccc1</div>
+                        </li>
+                        <li>
+                            <div class="up">bccccc1</div>
+                            <div class="down">bccccc1</div>
+                        </li>
+                        <li>
+                            <div class="up">cccccc1</div>
+                            <div class="down">cccccc1</div>
+                        </li>
+                        <li>
+                            <div class="up">dccccc1</div>
+                            <div class="down">dccccc1</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content">
+                <ul class="list">
+                    <li class="liList">
+                        <div class="divList">
+                            1111111
+                        </div>
+                    </li>
+                    <li class="liList">
+                        <div class="divList">
+                            2222222
+                        </div>
+                    </li>
+                    <li class="liList">
+                        <div class="divList">
+                            3333333
+                        </div>
+                    </li>
+                    <li class="liList">
+                        <div class="divList">
+                            4444444
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <script>
+
+        void function(){
+
+            var headerMain = $('#headerMain')
+            var arrow = $$(headerMain,'arrow')[0]
+            var nav = $$(headerMain, '.nav')[0]
+            var navLi = $$(nav,'li')
+
+            function init(){
+
+            }
+
+            function arrowPos(index){
+                arrow.style.left = navLi[index].offsetLeft + navLi[index].offsetWidth/2 + 'px'
+            }
+
+
+            //
+            function $(selector){
+                return document.getElementById(selector.substring(1))
+            }
+            function $$(ele,selector){
+                if(arguments.length == 1){
+                    selector = ele
+                    ele = document
+                }
+                if(selector.charAt(0) == '.'){
+                    return ele.getElementsByClassName(selector.substring(1))
+                }else{
+                    return ele.getElementsByTagName(selector)
+                }
+            }
+            function viewW(){
+                return window.innerWidth || document.documentElement.clientWidth
+            }
+            function viewH(){
+                return window.innerHeight || document.documentElement.clientHeight
+            }
+            function setCSS3(ele,attr,value){// setCSS3(content,'transform','rotate(100deg)')
+                ele.style[arrt] = value
+                ele.style['webkit'+attr.substring(0,1).toUpperCase()+attr.substring(1)] = value
+            }
+        }()
+        </script>
+    </body>
+</html>
