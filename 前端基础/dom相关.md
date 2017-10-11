@@ -63,3 +63,9 @@ var elem = document.forms.namedItem('myForm');
 // 等价于下面的写法
 var elem = document.forms['myForm'];
 </pre>
+
+### 事件类型
+
+滚轮事件
+
+包括IE6在内的浏览器是使用onmousewheel，而FireFox浏览器一个人使用DOMMouseScroll. 经自己测试，即使现在FireFox 19下，也是不识onmousewheel

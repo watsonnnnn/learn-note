@@ -176,9 +176,9 @@
                     clearTimeout(timer)
                     timer =setTimeout(function(){
                         if(ev.detail){
-                        dir = ev.detail > 0
+                        dir = (ev.detail) > 0
                     }else{
-                        dir = !ev.wheelDelta > 0
+                        dir = !(ev.wheelDelta) > 0
                     }
                     if(dir){
                         if(nowIndex != liList.length -1){
