@@ -119,7 +119,7 @@
                             ul1.style.left = 0+'px'
 
 //     offset、scroll、client*、getComputedStyle、currentStyle：
-
+// https://segmentfault.com/a/1190000008849210
 // 由于浏览器在处理批量修改页面元素样式时，会将批量操作缓存起来，然后再做一次 reflow 过程（异步 reflow），
 // 避免每次操作都执行 reflow 消耗资源。但是如果在某个操作之后立马调用了以上执行属性，为了等够得到最新的样式，会检查缓存的操作，
 // 是否需要 reflow，这样就 flush 出最新的样式。

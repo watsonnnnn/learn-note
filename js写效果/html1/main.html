@@ -27,6 +27,13 @@
             #headerMain .nav .down{}
             #headerMain .arrow{}
 
+            .divlist3{width: 100%;height: 100%;overflow: hidden}
+            .divlist3:hover img{transform: scale(1)}
+            .div3{position:relative;height: 200px;width: 200px}
+            .div3 ul{position: absolute;top: 0;left: 0;z-index: 10}
+            .divlist3 img{transform: scale(1.5);transition:.5s}
+            .div3 ul li{height: 100px;width:100px;overflow: hidden;float: left;position: relative}
+            .div3 ul li img{position: absolute}
 
             #content{width:100%;height:100%;overflow: hidden}
             #content .list{transition: .5s}
@@ -78,6 +85,25 @@
                     <li class="liList">
                         <div class="divList">
                             3333333
+                            <div class="div3" id="div3">
+                                <ul>
+                                    <li>
+                                        <img src="./p2.jpg" width="200" height="200" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="./p2.jpg" width="200" height="200"  alt="">
+                                    </li>
+                                    <li>
+                                        <img src="./p2.jpg" width="200" height="200" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="./p2.jpg" width="200" height="200" alt="">
+                                    </li>
+                                </ul>
+                                <div class="divlist3">
+                                    <img src="./p1.jpg" alt="pp" width="200" height="200">
+                                </div>
+                            </div>
                         </div>
                     </li>
                     <li class="liList">
@@ -98,6 +124,9 @@
             var nav = $$(headerMain, '.nav')[0]
             var navLi = $$(nav,'li')
             var content = $('#content')
+            var divImages = $('#div3')
+            var divUl = $$(divImages, 'ul')[0]
+            var images3 =$$(divUl, 'img')
             var list = $$(content,'.list')[0]
             var liList = $$(content, '.liList')
             var nowIndex = 0
@@ -106,11 +135,24 @@
             function init(){
                 autoHeight()
                 bindNav()
-                slideList(0)
+                slideList(2)
                 bindScroll()
+                imageAnimate()
             }
 
             init()
+            var length
+            function imagesTranslate(){
+                for(var i = 0;length = images3.length,i<length;i++){
+                    
+                }
+            }
+
+            function imageAnimate(){
+                divUl.onmouseover =function(){
+                    console.log('over')
+                }
+            }
 
             function arrowPos(index){
                 for(var i = 0;i<navLi.length;i++){
