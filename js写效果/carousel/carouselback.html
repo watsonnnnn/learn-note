@@ -18,9 +18,6 @@
             position: absolute;
             overflow: hidden;
             width:3000%;
-            
-        }
-        .animate{
             transition: all 1s
         }
         ul#ul1>li{
@@ -53,7 +50,7 @@
 </head>
 <body>
     <div class="container" style="width:600px;overflow:hidden;position:relative;height:500px;margin: 200px auto">
-        <ul id="ul1" class="animate" style="left:0px;">
+        <ul id="ul1" style="left:0px;">
             <li>
                     <img height="100%" width="100%" src="images/p1.jpg" alt="" srcset="">
             </li>
@@ -98,7 +95,7 @@
             setRoundColor(index)
 
             function setOption(el,attr){
-                el.style[attr] = -containerWidth*index + 'px' //往左轮播
+                el.style[attr] = -containerWidth*index + 'px'
             }
 
             function play(){
@@ -109,32 +106,17 @@
             var transition
             //跳到指定位置图和圆点
             function goToIndex(){
-                // setOption(ul1,'left')
-                ul1.style.left = -600*index+'px'
-                
-                    if(index >= ul2.childElementCount){
-                        index = 0
-                        setTimeout(function(){
-                            ul1.classList.toggle('animate')
-                            ul1.style.left = 0+'px'
-
-//     offset、scroll、client*、getComputedStyle、currentStyle：
-
-// 由于浏览器在处理批量修改页面元素样式时，会将批量操作缓存起来，然后再做一次 reflow 过程（异步 reflow），
-// 避免每次操作都执行 reflow 消耗资源。但是如果在某个操作之后立马调用了以上执行属性，为了等够得到最新的样式，会检查缓存的操作，
-// 是否需要 reflow，这样就 flush 出最新的样式。
-
-                            ul1.offsetLeft // 立即触发reflow !!!
-                            ul1.classList.toggle('animate')
-
-                            
-                    },1000)
-                }
-                
-                
+                ul1.style.transition = 'all 1s'
+                setOption(ul1,'left')
                 setRoundColor(index)
-
             }
+            ul1.addEventListener('transitionend',function(){
+                if(index == liLength){
+                    ul1.style.transition = 'none'
+                    ul1.style.left = '0px'
+                    index = 0
+                }
+            })
             //小圆点点击
             ul2.addEventListener('click',function(e){
                 if(e.target.tagName === 'LI'){
@@ -148,6 +130,9 @@
             })
             //设置小圆点颜色
             function setRoundColor(index){
+                if(index >= ul2.childElementCount){
+                    index = 0
+                }
                 var arr = [].slice.call(ul2.getElementsByTagName('li'),null)
                 arr.forEach(function(item){
                     item.style.background = '#ccc'
