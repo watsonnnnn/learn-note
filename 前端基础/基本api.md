@@ -44,3 +44,8 @@ propertyIsEnumerable()：判断某个属性是否可枚举。
 ### slice substring substr
 
 都是从字符串中截取，前两个方法第二个参数是结束位置，最后一个第二个参数是截取个数。
+
+### parseInt(value,[radix]) toString([radix])
+parseInt('1010',2)：表示以2将前面的value也就是'1010'里面的数据当成二进制数，然后转换成十进制数，也就是将二进制的1010转换成十进制。value可以是任意类型，但如果不是number的话 可能会是NaN。
+
+value.toString(16)：表示将value转换成16机制字符串数，这个valu的默认进制是十进制而且不是string，也就是将十进制的value转换成16进制后再变成字符串(如果value是string类型的话 原样返回)。

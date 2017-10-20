@@ -10,4 +10,4 @@ Base64是一种任意二进制到文本字符串的编码方法，常用于在UR
 （http://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/）
 
 ### FormData对象
-使用formdata对象，当new FormData()不传参数时，是一个空的form，然后使用append方法进行添加。最后，在异步提交时，contenttype格式就是文件表单提交时的multipart/form-data;boundary=----boundary..。 所以对于有文件的表单异步提交，不需要自己去设置请求头。
+使用formdata对象，当new FormData()不传参数时，是一个空的form，然后使用append方法进行添加。最后，在异步提交时，contenttype格式就是文件表单提交时的multipart/form-data;boundary=----boundary..。 所以对于有文件的表单异步提交，不需要自己去设置请求的contenttype。

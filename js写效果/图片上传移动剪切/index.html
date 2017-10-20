@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>mobile photo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <input type="file" name="file" value="点击上传" placeholder="点击上传" id="file"/>
+        <canvas width="400" height="300"/>
+    </body>
+    <script>
+        var fileButton =document.querySelector('#file')
+        fileButton.addEventListener('change',function(e){
+            console.log(e.target.files)
+            var fileReader = new FileReader()
+            fileReader.onload = function(e){
+                // var imgE = document.createElement('img')
+                // imgE.src = e.target.result
+                // imgE.width = 300
+                // imgE.height = 200
+                // imgE.style = "display:block"
+                // document.body.appendChild(imgE)
+
+                var image = new Image()
+                image.src = e.target.result
+                image.onload =function(){
+                    var canvas = document.querySelector('canvas')
+                    var ctx = canvas.getContext('2d')
+                    ctx.drawImage(image,100,100,200,200)
+                }
+
+            }
+            fileReader.readAsDataURL(e.target.files[0])
+        })
+    </script>
+</html>
