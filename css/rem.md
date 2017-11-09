@@ -28,6 +28,8 @@ void function (doc, win) {
 
 (http://www.jianshu.com/p/b00cd3506782)
 
+简单计算rem  clientWidth*dpr/10
+
 ### 关于继承
 
 不可继承的：display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、left、right、top、bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、page-bread-before和unicode-bidi。
