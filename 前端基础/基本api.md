@@ -49,3 +49,17 @@ propertyIsEnumerable()：判断某个属性是否可枚举。
 parseInt('1010',2)：表示以2将前面的value也就是'1010'里面的数据当成二进制数，然后转换成十进制数，也就是将二进制的1010转换成十进制。value可以是任意类型，但如果不是number的话 可能会是NaN。
 
 value.toString(16)：表示将value转换成16机制字符串数，这个valu的默认进制是十进制而且不是string，也就是将十进制的value转换成16进制后再变成字符串(如果value是string类型的话 原样返回)。
+
+### array.sort(function(a,b){})
+
+数组元素排序。按照冒泡排序规则。
+
+![bubble](../images/bubblesort.png)
+
+每次放相邻2个元素进去，如果返回值大于0 就交换位置；否则不交换。
+<pre>
+function(a,b){return a - b}
+返回值>0 就是说a>b, 也就是前一个元素大于后一个，交换位置。
+到最后就形成了升序；
+如果是return b - a,如果>0，就是说后一个元素比前一个大，交换顺序，最后就形成了降序。
+</pre>
