@@ -12,7 +12,7 @@
             function upload(){
                 var form = new FormData()
                 var file = document.getElementById('file1')
-                // form.append('file1',file.files[0])
+                form.append('file1',file.files[0])
                 form.append('qqq','qqq')
                 console.log(form)
                 var request = new XMLHttpRequest();
