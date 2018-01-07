@@ -39,3 +39,13 @@ em 相对单位,相对当前使用对象内文本的字体尺寸，如果当前�
 ### after before
 伪类元素，是添加到选择器选中的元素里的内容前或后，也就是相当于元素的子，而不是在元素标签外。
 
+### ui伪类和结构化伪类
+link visited hover active
+e:focus
+e:target a标签href指向其它元素时，那个元素就是target，用:target伪类选中那个元素。比如<a href="#abc" />，对应元素<div id="abc"></div>，规则 div#abc{background:#eee}，用户点击a标签转到元素时生效。就是说 作为target的e的样式。
+
+### 伪元素
+e::first-letter 选中e元素的第一个字符
+e::first-line 选中文本（一般是段落）第一行
+
+
