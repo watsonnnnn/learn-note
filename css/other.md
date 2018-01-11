@@ -42,10 +42,58 @@ em 相对单位,相对当前使用对象内文本的字体尺寸，如果当前�
 ### ui伪类和结构化伪类
 link visited hover active
 e:focus
-e:target a标签href指向其它元素时，那个元素就是target，用:target伪类选中那个元素。比如<a href="#abc" />，对应元素<div id="abc"></div>，规则 div#abc{background:#eee}，用户点击a标签转到元素时生效。就是说 作为target的e的样式。
+e:target a标签href指向其它元素时，那个元素就是target，用:target伪类选中那个元素。比如
+
+<pre>
+<a href="#abc" >a标签href到#abc</a>
+</pre>
+
+对应元素<div id="abc"></div>，规则 div#abc{background:#eee}，用户点击a标签转到元素时生效。就是说 作为target的e的样式。
 
 ### 伪元素
 e::first-letter 选中e元素的第一个字符
 e::first-line 选中文本（一般是段落）第一行
 
+### background-position
 
+元素分成前景层和后景层，前景包括border font color等属性，后景就是background。background-position就是来调整背景位置，一般都是背景图位置。
+
+ background-position: left top, top left, 0 0 是等价的。如果只写一个值，那么第二个就是'center'
+
+background和元素的左上顶点默认是重复的，所以调background-position就是调的背景图的左上顶点在x和y轴上的位置。
+
+当用百分比作单位时，百分比的计算规则和其它元素不一样。
+
+background-position-x: (容器宽-元素宽)*百分比。就是说容器去掉元素的剩下的空白部分为百分比的计算基础。同理y的position就是高度相减计算。
+
+### VSP（厂商前缀）属性
+border-image,translate,transition,linear-gradient,radial-gradient(放射性渐变),transform,transform-origin
+
+### linear-gradient
+<pre>
+背景色渐变
+.grad1{
+    background:linear-gradient(#e86a43 20%, #fff 50%, #e86a43 80%); 
+}
+.grad2{
+    background:linear-gradient(#64d1dd, #fff 50%, #64d1dd); 
+}
+</pre>
+
+渐变色默认从center top位置开始。
+
+开始位置和结束位置不指定百分比的话，默认是0%和100%。
+
+如果不用百分比或其他声明式指定位置的话，默认分布就是0 50% 100%。
+
+如果中间指定了百分比，但是没有开头和结尾指定，那么像grad1的情况就是从0到20%用的都是#e86a43，80%到100%都是#e86a43
+
+
+### font
+字体栈指定使用的字体列表。可以被继承。
+
+写字体族font-family时，最后一个写的最好的通用字体，serif,Sans-serif，这种通用字体类。
+
+font-variant: small-caps  // 小写英文字母转大写。
+
+百分比、em、rem设置字体尺寸时，相对的是最近的被设定过字体大小的祖先元素来确定。
