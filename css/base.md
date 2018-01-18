@@ -25,6 +25,8 @@ overflow:hidden
 
 小写字母x的下边缘
 
+### inline-box的高度由自身的line-height或是继承来的line-height决定。默认自身的line-height是自身font-size的1.1-1.2倍。
+
 ### vertical-align
 垂直对齐方式
  
@@ -48,11 +50,12 @@ inline-level/element(内联级元素)，display不同时
 子元素的垂直中点和行盒子的baseline+字母x高度的一半对齐。也就是基线往上1/2个x-height高度。
 
 * text-top。
-子元素盒子的顶部和行盒子内容区域的顶部对齐
+子元素盒子的顶部(如果有继承的line-height，盒子顶部就是算上line-height的顶部)和行盒子内容区域(content area，也就是说即使有继承的line-height，也只会按inline-box里面的content顶部来算)的顶部对齐
 * text-bottom。
 子元素盒子的】底部和行盒子内容区域的底部对齐
 * top bottom
-基本上和上面的没有差别。
+
+子元素的顶部和当前line box的顶部对齐，这个元素不再决定行元素的基线，两边的inline boxes按照它们自己的规则决定对齐方式。(ps:line-height是可以继承的，即使是匿名inline-box，也是有继承来的或是默认的line-height，所以如果父元素是有line-height的话，里面的子元素在对齐方式变化时，都要考虑到line-height)
 * sub。
 降低子元素盒子的基线到父元素盒子下标内容的基线位置，相对于正常基线再往下。
 * sup。
