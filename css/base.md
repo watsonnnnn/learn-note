@@ -17,9 +17,9 @@ display:inline-block
 overflow:hidden
 
 ### em
-相对于该元素font-size
+相对于该元素父元素的font-size
 
-1em = 1 * 该元素的font-size
+1em = 1 * 父元素的font-size
 
 ### 溢出容器打点显示
 
@@ -62,6 +62,8 @@ inline-level/element(内联级元素)，display不同时
 * middle。
 子元素的垂直中点和行盒子的baseline+字母x高度的一半对齐。也就是基线往上1/2个x-height高度的位置。
 
+多行文本垂直居中，可以在标签里再加一个元素，两个设置vertical-align:middle
+
 * text-top。
 子元素盒子的顶部(如果有继承的line-height，盒子顶部就是算上line-height的顶部)和行盒子内容区域(content area，也就是说即使有继承的line-height，也只会按inline-box里面的content顶部来算)的顶部对齐
 * text-bottom。
@@ -75,6 +77,7 @@ inline-level/element(内联级元素)，display不同时
 同理。
 * <percent>
 百分比是根据自身的line-height来计算的。表示相对于自身的baseline升高或降低元素一定距离。0%就是baseline，为正就是往上提元素。
+对于图片这种非替换元素，它的line-height就是默认继承来的值，即使是显式设置了，也不会对该元素的大小有影响。
 * 具体像素。
 
 ### 使用auto属性
