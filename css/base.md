@@ -17,9 +17,15 @@ display:inline-block
 overflow:hidden
 
 ### em
-相对于该元素父元素的font-size
+相对于该元素父元素的font-size // wrong !!!!
 
-1em = 1 * 父元素的font-size
+1em = 1 * 父元素的font-size // wrong !!!!
+
+https://www.zhihu.com/question/273415013/answer/368232426
+
+非font-size的其它属性使用em为单位，相对于当前元素的font-size值
+
+font-size属性使用em，相对于父元素的font-size。子元素font-size为2em，父元素font-size为16px，那么子元素的font-size实际是2*16
 
 ### 溢出容器打点显示
 
