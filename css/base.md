@@ -23,9 +23,11 @@ overflow:hidden
 
 https://www.zhihu.com/question/273415013/answer/368232426
 
+https://zhuanlan.zhihu.com/p/30413803
+
 非font-size的其它属性使用em为单位，相对于当前元素的font-size值
 
-font-size属性使用em，相对于父元素的font-size。子元素font-size为2em，父元素font-size为16px，那么子元素的font-size实际是2*16
+font-size属性使用em，相对于父元素的font-size。子元素font-size为2em，父元素font-size为16px，那么子元素的font-size实际是2*16，这种情况下其它的非fontsize依然遵循前面的规则。
 
 ### 溢出容器打点显示
 
