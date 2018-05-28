@@ -227,6 +227,6 @@ font-variant: small-caps  // 小写英文字母转大写。
 
 !important不具有继承性，所以即使在父元素加上它，子元素也还是按照自身的样式优先级来
 
-### getComputedStyle
-在window对象中
+### padding和margin的单位
 
+为百分比时，padding(margin)-top和padding(margin)-left都是相对于父元素的宽度来计算的。
