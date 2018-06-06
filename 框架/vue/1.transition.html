@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transition</title>
+    <style>
+        .div1 {
+            /* background: #3b9e4f; */
+            width: 100px;
+            height: 100px;
+        }
+
+        .v-enter, .v-leave-to {
+            opacity: 0;
+            background: red;
+        }
+
+        .v-enter-active, .v-leave-active {
+            transition: opacity 5s;
+        }
+
+        .v-enter-to{
+            opacity: 0.8;
+            background: blue;
+        }
+
+        .v-leave{
+            opacity: 0.6;
+            background: #b6c7;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <transition>
+            <div v-if="show" class="div1">
+
+            </div>
+        </transition>
+        <button @click="toggle">点击</button>
+    </div>
+
+    <script src="js/node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#container',
+            data: {
+                show: false
+            },
+            methods: {
+                toggle() {
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
