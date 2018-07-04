@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="wrapper">
+    {{msg}}
+    <component-a title="titlehere" @emit-msg="emitMsg">eeeee</component-a>
+  </div>
+
+  <script>
+
+    new Vue({
+      el: '#wrapper',
+      data: {
+        msg: 'error'
+      },
+      methods: {
+        emitMsg(){
+          this.msg = 'true'
+        }
+      },
+      components: {
+        'component-a':{
+          props: ['title'],
+          data: function () {
+            return {
+              a: 123
+            }
+          },
+          template: '<div @click="emitMsg">{{this.a}}{{this.title}}</div>',
+          methods: {
+            emitMsg(e){
+              console.log('emit',e)
+              this.$emit('emit-msg', 999); // 事件可以是连字符kebabcase(短横线命名)隔开 camelcase命名的不起作用 emit时 事件名仍然会格式化为小写 emitMsg => emitmsg
+            }
+          }
+          // render(h){
+          //   return h('div', this.$slots.default); // 要使用return
+          // }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

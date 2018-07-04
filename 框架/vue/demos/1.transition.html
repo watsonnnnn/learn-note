@@ -6,33 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>transition</title>
-    <link rel="stylesheet" href="js/node_modules/animate.css/animate.css">
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
         .div1 {
             background: #3b9e4f;
             width: 100px;
             height: 100px;
-            position: absolute;
         }
 
-        @keyframes fadeIn{
-            from{
-                top: 100px;
-            }
-            to{
-                top: 0;
-            }
-        }
-        .main-enter-active{
-            animation: fadeIn linear 2s;
+        /* .v-enter{
+            background: red;
+        } */
+
+        .v-enter-active, .v-leave-active {
+            transition: all 5s;
         }
 
-        .main-leave-active{
-            animation: fadeIn 2s linear reverse;
+        .v-enter-to{
+            opacity: 0.8;
+            background: blue;
+        }
+
+        .v-leave-to{
+            opacity: 0.6;
+            background: #b6c7;
         }
 
     </style>
@@ -41,15 +37,15 @@
 <body>
 
     <div id="container">
-        <transition name="main">
+        <transition>
             <div v-if="show" class="div1">
 
             </div>
         </transition>
-        <button style="position:absolute;left:50%" @click="toggle">点击</button>
+        <button @click="toggle">点击</button>
     </div>
 
-    <script src="js/node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue/dist/vue.js"></script>
     <script>
         let vm = new Vue({
             el: '#container',

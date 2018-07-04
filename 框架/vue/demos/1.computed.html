@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id='wrapper'>
+    <div>{{msgStr}}</div>
+    <div>{{msgStr}}</div>
+    <div>{{msgStr1()}}</div>
+    <div>{{msgStr1()}}</div>
+  </div>
+  <script>
+    var vm = new Vue({
+      data: {
+        msg: Date.now(),
+        msg1: 'msg1'
+      },
+      el: '#wrapper',
+      computed: {
+        msgStr(){
+          console.log('computed');
+          return 'thisismsgcomputed' + this.msg;
+        }
+      },
+      methods: {
+        msgStr1(){
+          console.log('methods')
+          return 'thisismsgmethod' + this.msg1;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
