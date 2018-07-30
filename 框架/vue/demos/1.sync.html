@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>sync</title>
+  <style>
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+    {{a}}
+    <Child :my-prop1="a" @update:my-prop1="upp"></Child>
+  </div>
+
+  <script src="../node_modules/vue/dist/vue.js"></script>
+  <script>
+    var Child = {
+      props: {
+        myProp1: String
+      },
+      data(){
+        return {
+        }
+      },
+      methods: {
+        cl(){
+          this.$emit('update:myProp1', '2');
+        }
+      },
+      template: '<div>{{this.myProp1}}template1<button @click="cl">点击</button></div>'
+    }
+
+    let vm = new Vue({
+      el: '#container',
+      data: {
+        show: false,
+        a: '1'
+      },
+      components: {
+        Child
+      },
+      methods: {
+        toggle() {
+          this.show = !this.show;
+        },
+        upp(){
+          this.a = '2'
+        }
+      }
+    })
+  </script>
+</body>
+
+<!-- sync相当于this.emit('update:xxx',xxx),也就是在属性上绑了一个自定义事件，用来修改父组件的prop -->
+
+</html>
