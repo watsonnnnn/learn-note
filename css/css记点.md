@@ -44,7 +44,7 @@ font-size属性使用em，相对于父元素的font-size。子元素font-size为
 
 ### inline-box的高度由自身的line-height或是继承来的line-height决定。默认自身的line-height是自身font-size的1.1-1.2倍。
 
-line-height数值带单位时，em %，父元素行高为150%或1.5em时，子元素的行高会根据父元素字体大小计算出(父fontsize*lineheight,150%*16px)然后再让子元素继承。
+line-height数值带单位时，em %，父元素行高为150%或1.5em时，子元素的行高会根据父元素字体大小计算出(父fontsize*lineheight,150%*16px)然后再让子元素继承。也就是说带单位时的line-height是用自身的font-size和数值相乘。
 
 如果不带单位，此时叫缩放因子。子元素继承这个系数，然后和自身元素的font-size动态计算出30*1.5。
 
