@@ -29,7 +29,7 @@
       },
       methods: {
         cl(){
-          this.$emit('update:myProp1', '2');
+          this.$emit('update:my-prop1', '5');
         }
       },
       template: '<div>{{this.myProp1}}template1<button @click="cl">点击</button></div>'
@@ -48,8 +48,8 @@
         toggle() {
           this.show = !this.show;
         },
-        upp(){
-          this.a = '2'
+        upp(v){
+          this.a = v
         }
       }
     })
