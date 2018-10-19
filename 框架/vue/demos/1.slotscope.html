@@ -13,14 +13,42 @@
 <body>
 
   <div id="container">
+    <keep-alive>
+        <h3 v-if="show">here is h3</h3>
+    </keep-alive>
+    <app></app>
+    <button @click="show = !show">点击</button>
   </div>
 
   <script src="../node_modules/vue/dist/vue.js"></script>
   <script>
+
+    var App = {
+      template: `<div>zzzz</div>`,
+      data(){
+        return {}
+      },
+      mounted(){
+        console.log('zi mounted')
+      }
+    }
+
     let vm = new Vue({
       el: '#container',
+      components: {
+        app: App
+      },
       data: {
-        
+        show: true
+      },
+      beforeMount(){
+          console.log('beforemount', this.$el)
+      },
+      mounted() {
+        console.log('mounted');
+      },
+      methods: {
+       
       }
     })
   </script>
