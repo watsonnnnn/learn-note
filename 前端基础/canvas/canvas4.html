@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <canvas id="myCanvas" style="height:500px;width:1000px;">
+
+  </canvas> -->
+  <canvas id="myCanvas1" height="500" width="1000">
+
+    </canvas>
+  <script>
+    // var context = document.getElementById("myCanvas").getContext('2d');
+    // context.strokeStyle = "#005588";
+    // for (var i = 0; i < 10; i++) {
+    //   //context.beginPath();
+    //   context.arc(50 + i * 100, 60, 40, 0, 2 * Math.PI * (i + 1) / 10);
+    //   context.closePath();
+    //   context.stroke();
+    // }
+    var ctx = document.querySelector('#myCanvas1').getContext('2d');
+    ctx.strokeStyle="red";
+    ctx.beginPath();
+    ctx.moveTo(100,100);
+    ctx.lineTo(200,100);
+    ctx.stroke();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.moveTo(100, 120);
+    ctx.lineTo(200,120);
+    ctx.stroke();
+  </script>
+</body>
+
+</html>
