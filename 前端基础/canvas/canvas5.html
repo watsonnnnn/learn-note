@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
-  <canvas id="ca1"></canvas>
+  <canvas id="ca1" width="1800" height="1800"></canvas>
   <script>
     var ctx = document.querySelector('#ca1').getContext('2d');
-    ctx.rect(20,20,300,30);
-    ctx.fillStyle="red";
+    ctx.beginPath();
+    ctx.arc(400, 400, 100, Math.PI * 2, false);
+    ctx.fillStyle = 'orange';
     ctx.fill();
-    ctx.rect();
+    ctx.beginPath();
+    ctx.arc(400, 400, 50, Math.PI * 2, false);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(100, 100);
+    ctx.lineTo(500, 500);
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "#AA394C";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(150, 50);
+    ctx.lineTo(650, 50);
+    ctx.lineTo(650, 550);
+    ctx.lineTo(150, 550);
+    // ctx.lineTo(150, 50);
+    ctx.closePath();
+    ctx.lineWidth = 15;
+    ctx.strokeStyle = "AA394C";
+    ctx.fillStyle = 'rgba(120,220,220,0.4)';
+    ctx.fill();
+    ctx.stroke();
   </script>
 </body>
+
 </html>
