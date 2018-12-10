@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas" height="600" width="1000"></canvas>
+  <script>
+    var ctx = document.querySelector('#canvas').getContext('2d');
+    var grd = ctx.createLinearGradient(200, 0, 600, 0);// (xstart, ystart, xend, yend)
+    grd.addColorStop(0, 'olive');
+    grd.addColorStop(0.25, 'maroon');
+    grd.addColorStop(0.5, "aqua");
+    grd.addColorStop(0.75, "fuchsia");
+
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 300, 300, 100);
+  </script>
+</body>
+
+</html>

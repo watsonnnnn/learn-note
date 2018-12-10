@@ -13,18 +13,23 @@
   <script>
     var ctx = document.querySelector('#ca1').getContext('2d');
     ctx.beginPath();
-    ctx.arc(400, 400, 100, Math.PI * 2, false);
-    ctx.fillStyle = 'orange';
-    ctx.fill();
+    ctx.arc(400, 400, 100, Math.PI * 1, false); // 调用时如果有其他子路径存在 会用一条线把已有路径的终点和这段路径的起点连接
+    // ctx.fillStyle = 'orange';
+    // ctx.fill();
+    ctx.strokeStyle = 'orange';
+    ctx.closePath(); // 先close 再stroke才有效 理解： 假设有条虚拟的线 要先把线给闭合了 也就是从路径的终点 再回到最开始的起点 再上色 才有效果
+    ctx.stroke();
+
     ctx.beginPath();
     ctx.arc(400, 400, 50, Math.PI * 2, false);
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = 'black';
     ctx.fill();
 
     ctx.beginPath();
     ctx.moveTo(100, 100);
     ctx.lineTo(500, 500);
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 35;
+    ctx.lineCap="round";
     ctx.strokeStyle = "#AA394C";
     ctx.stroke();
 
