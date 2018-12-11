@@ -94,15 +94,15 @@ inline-level/element(内联级元素)，display不同时
 
 margin width 有auto
 
-margin指定显示值，width设置为auto，宽度会自动确定为某个值，达到父元素的内容宽度。
+margin指定显式值，width设置为auto，宽度会自动确定为某个值，达到父元素的内容宽度。
 
-margin width都指定显示值的话，水平属性过分受限，重置右外边距。margin-right会自动确定某个值，从而让盒子达到最大宽度，margin-left margin-right 和width加起来就是父元素的width。
+margin width都指定显式值的话，水平属性过分受限，重置右外边距。margin-right会自动确定某个值，从而让盒子达到最大宽度，margin-left margin-right 和width加起来就是父元素的width。
 
 两个margin都为auto，width指定值，那么左右margin会自动计算，除去width后评分剩下的，也就是元素会居中。
 
 默认情况下 margin为0，width为auto。如果margin和width都为auto，就和默认情况一样。
 
-margin padding border width，加起来一共7个属性，总和等于父元素width，包括全部显示指定求和不够marginright补全的情况。
+margin padding border width，加起来一共7个属性，总和等于父元素width，包括全部显式指定 以及 不够时marginright补全的情况。
 
 ## 替换元素 replace-element 浏览器根据标签元素和属性来决定显示的内容。
 
@@ -115,6 +115,10 @@ margin-top margin-bottom设置为auto的话，会自动重置为0
 父子元素发生margin穿透时，取的是同一外边距的最大值。
 
 块元素height为auto时，且只有块级子元素时，默认高度是内部最高子元素的上外边框界到最低的下边框界，所以，子元素的外边距会超出包含这些子元素的元素；但是，如果父元素是有border或者padding的话，子元素的外边距会被纳入父元素高度的计算。
+
+## 和width: 100%区分
+
+width: 100%，默认情况下 使用父元素的width来作自身的width，同时受box-sizing的影响，会影响到100%的作用域。默认是content-box，也就是子元素宽等于父元素宽，而在页面上显示的会包括border padding margin，也就是会出现溢出。当为border-box时，使用父元素的width-父paddingmarginborder来作自身的width，且这个width还会包含自身的border padding。
 
 ### transform 属性具有使元素脱离文档流的作用，因为这个属性的效果不会影响到文档里的其它元素
 
