@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>arc</title>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let canvas = document.querySelector('#canvas');
+    canvas.width = 800;
+    canvas.height = 600;
+
+    let ctx = canvas.getContext('2d');
+    // ctx.arc(100,100,50, 0, 2*Math.PI/5);
+    // ctx.closePath();
+    // ctx.stroke();
+    for (var i = 0; i < 3; i ++){
+    //context.beginPath();
+    ctx.arc(50 + i*100,60,40,0,2*Math.PI*(i+1)/10);
+    if(i!=2){
+        ctx.closePath();
+    }
+    
+    ctx.stroke();
+}
+  </script>
+</body>
+</html>
