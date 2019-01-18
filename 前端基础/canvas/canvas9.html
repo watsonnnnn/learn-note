@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>arc</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="600"></canvas>
+  <script>
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.moveTo(200,200);
+    ctx.arc(300, 300, 100, Math.PI/4, Math.PI/2); // x,y,radius,startAngle,endAngle, anticlockwise  2个弧度是从x轴正向开始旋转，向下正 向上负 和坐标系没有关系
+    ctx.strokeStyle="red";
+    ctx.stroke();
+  </script>
+</body>
+</html>
