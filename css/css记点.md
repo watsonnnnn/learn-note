@@ -231,3 +231,8 @@ font-variant: small-caps  // 小写英文字母转大写。
 ### padding和margin的单位
 
 为百分比时，padding(margin)-top和padding(margin)-left都是相对于父元素的宽度来计算的。
+
+
+### css属性选择器*=,|=,^=,$=,~=的区别
+
+https://www.cnblogs.com/gugege/p/6340422.html
