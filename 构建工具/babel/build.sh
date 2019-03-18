@@ -1,0 +1,1 @@
+babel -o dist.js --plugins ./plugin.js
