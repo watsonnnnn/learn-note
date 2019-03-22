@@ -1,5 +1,5 @@
 ### eventloop简介
-![eventloop](../images/loop.png)
+![eventloop](http://lc-jnsqxslr.cn-n1.lcfile.com/3b6b1045a9e763e25c54.png)
 [好文](https://segmentfault.com/a/1190000004322358)
 直接上图。简单粗暴。
 
@@ -131,7 +131,7 @@ console.log(3);
 下一步该取的是microtask queue中的任务了。
 因此promise.then的回调比setTimeout先执行。
 
-![task](../images/task.png)
+![task](http://lc-jnsqxslr.cn-n1.lcfile.com/c84b42e079ab6fed1b56.png)
 
 不管有几个队列，按照优先级从高到底把它们首尾相连，这样就组成了一个“虚拟队列”。(当然，micro在前，macro在后)
 事件循环就是不断地从虚拟队列的头中取任务然后执行。在此过程中产生的新任务，会被加到相应的子队列。

@@ -1,6 +1,6 @@
 ### connect
 代码比较多，抽象，慢慢看
-![redux connect](../../images/redux/redux-connect.png)
+![redux connect](http://lc-jnsqxslr.cn-n1.lcfile.com/50f8d604dc81f77f6963.png)
 
 <pre>
 export function createConnect({

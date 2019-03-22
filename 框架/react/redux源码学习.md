@@ -4,7 +4,7 @@ redux真的是有利于理解函数式编程，遍地都是函数，遍地都很
 
 先看一眼redux整个文件夹的目录
 
-![redux category](../../images/redux/category.png)
+![redux category](http://lc-jnsqxslr.cn-n1.lcfile.com/4c4dc9ccea99af76779c.png)
 
 基本上用到的也都在这几个里面了
 先是createstore

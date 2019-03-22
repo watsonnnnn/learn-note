@@ -1,5 +1,5 @@
 ### iframe
-![iframe pic](../images/iframe.png)
+![iframe pic](http://lc-jnsqxslr.cn-n1.lcfile.com/a30a7c5f0f0c9cfd770a.png)
 target属性表示在什么地方打开，和form中的一样。iframe 用于在网页内显示网页。
 
 如果iframe写了id或者name值，那么这个属性自动成为window的属性。

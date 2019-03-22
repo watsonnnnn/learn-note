@@ -16,4 +16,4 @@ css像素是个逻辑上的单位，是抽象存在的，而且是个相对单�
 <http://benweizhu.github.io/blog/2017/03/25/css-retina-image/>
 
 ### 优化
-![优化](../images/移动端优化.png)
+![优化](http://lc-jnsqxslr.cn-n1.lcfile.com/3ca41931e2c37f2784c7.png)

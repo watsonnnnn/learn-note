@@ -1,1 +1,1 @@
-![image](../../images/require-context.jpg)
+![image](http://lc-jnsqxslr.cn-n1.lcfile.com/ff97b52931f5d2143f00.jpg)

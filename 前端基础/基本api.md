@@ -54,7 +54,7 @@ value.toString(16)：表示将value转换成16机制字符串数，这个valu的
 
 数组元素排序。按照冒泡排序规则。
 
-![bubble](../images/bubblesort.png)
+![bubble](http://lc-jnsqxslr.cn-n1.lcfile.com/a034b41720ee9e2d6a4f.png)
 
 每次放相邻2个元素进去，如果返回值大于0 就交换位置；否则不交换。
 <pre>
